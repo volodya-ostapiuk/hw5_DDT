@@ -1,0 +1,26 @@
+Configuration:
+  name: Log4j2_Config
+  Properties:
+    Property:
+      name: log-path
+      value: logs
+
+  Appenders:
+    Console:
+      name: Console_Log
+      PatternLayout:
+        Pattern: "%highlight{%-5level}{FATAL=bg_red} %style{%date{yyyy-MM-dd HH:mm:ss.SSS}}{blue} %class{1}:%L - %highlight{%msg} %xEx{short}%n"
+    File:
+      name: Log_File
+      fileName: ${log-path}/logfile.log
+      PatternLayout:
+        Pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %class{1}:%L - %msg%xEx{short}%n"
+
+  Loggers:
+    Root:
+      level: all
+      AppenderRef:
+        - ref: Console_Log
+          level: all
+        - ref: Log_File
+          level: all
