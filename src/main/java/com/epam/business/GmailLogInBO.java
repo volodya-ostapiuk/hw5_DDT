@@ -4,8 +4,12 @@ import com.epam.pages.gmail.GmailHomePage;
 import com.epam.pages.gmail.GmailLoginPage;
 import com.epam.pages.gmail.GmailPasswordPage;
 import com.epam.utils.providers.DriverProvider;
+import com.epam.utils.providers.DriverWaitProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.StaleElementReferenceException;
+
+import java.util.NoSuchElementException;
 
 public class GmailLogInBO {
     private GmailLoginPage loginPage;
@@ -19,7 +23,7 @@ public class GmailLogInBO {
         homePage = new GmailHomePage();
     }
 
-    public void logIn(String userEmail, String userPassword) {
+    private void logIn(String userEmail, String userPassword) {
         logger.info("Authorising user with email: " + userEmail);
         loginPage.enterEmail(userEmail);
         logger.info("Authorising user with password: " + userPassword);
@@ -30,5 +34,16 @@ public class GmailLogInBO {
         logger.info("Getting page title that has Google logo");
         homePage.waitOnMailLogoToBeClickable();
         return DriverProvider.getInstance().getTitle().toLowerCase();
+    }
+
+    public boolean isLogIn(String userEmail, String userPassword) {
+        logger.info("Checking is mail logo displayed to verify user log in");
+        logIn(userEmail, userPassword);
+        try {
+            homePage.isMailLogoDisplayed();
+        } catch (Exception exc) {
+            return false;
+        }
+        return true;
     }
 }

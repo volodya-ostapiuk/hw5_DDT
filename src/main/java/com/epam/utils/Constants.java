@@ -25,6 +25,7 @@ public interface Constants {
     String TEST_LETTER_TOPIC = TEST_MESSAGE.getTopic();
     String TEST_LETTER_TEXT = TEST_MESSAGE.getLetterText();
 
-    String WRONG_LOGIN = "Wrong login.";
+    String UNEXPECTED_LOGIN = "Unexpected login.";
     String WRONG_SAVED_DRAFT = "Fields of last draft letter doesn't saved properly.";
+    String WRONG_DRAFT_SENT = "Draft message isn't sent successfully.";
 }

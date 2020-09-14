@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.epam</groupId>
-    <artifactId>selenium_hw_3_PageObject</artifactId>
+    <artifactId>hw_5_DDT</artifactId>
     <version>1.0</version>
 
     <build>

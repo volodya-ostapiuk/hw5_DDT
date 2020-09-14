@@ -18,4 +18,9 @@ public class Link extends BaseElement {
         Wait.waitOnElementToBeClickable(webElement);
         webElement.click();
     }
+
+    public boolean isDisplayed() {
+        logger.info("Checking is link element displayed");
+        return webElement.isDisplayed();
+    }
 }

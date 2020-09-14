@@ -33,19 +33,21 @@ public class GmailTest implements Constants {
      * Checks if last draft letter contains needed emails, text and topic. Sendsmvn cmvn test saved letter.
      */
     @Test(dataProvider = "usersLoginAndPassword")
-    private void verifyDraftFieldsAreSavedCorrectly(String userEmail, String userPassword) {
+    private void verifyDraftFieldsAreSavedCorrectly(String userEmail, String userPassword, boolean expectedResult) {
         GmailLogInBO logInBO = new GmailLogInBO();
-        logInBO.logIn(userEmail, userPassword);
-        Assert.assertTrue(logInBO.getPageTitle().contains(userEmail.toLowerCase()), WRONG_LOGIN);
+        Assert.assertEquals(logInBO.isLogIn(userEmail, userPassword), expectedResult, UNEXPECTED_LOGIN);
 
-        GmailMessageBO messageBO = new GmailMessageBO();
-        messageBO.createDraftMessage(TEST_MESSAGE);
-        messageBO.goToDraftsFolderAndClickLastDraftMessage();
+        if (expectedResult) {
+            GmailMessageBO messageBO = new GmailMessageBO();
+            messageBO.createDraftMessage(TEST_MESSAGE);
+            messageBO.goToDraftsFolderAndClickLastDraftMessage();
 
-        MessageEntity filledDraftMessage = messageBO.getDraftMessageEntity();
-        Assert.assertEquals(filledDraftMessage, TEST_MESSAGE, WRONG_SAVED_DRAFT);
+            MessageEntity filledDraftMessage = messageBO.getDraftMessageEntity();
+            Assert.assertEquals(filledDraftMessage.toString(), TEST_MESSAGE.toString(), WRONG_SAVED_DRAFT);
 
-        messageBO.sendLastDraftMessage();
+            messageBO.sendLastDraftMessage();
+            Assert.assertTrue(messageBO.isDraftSent(), WRONG_DRAFT_SENT);
+        }
     }
 
     @AfterMethod

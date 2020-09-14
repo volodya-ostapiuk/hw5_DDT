@@ -58,4 +58,15 @@ public class MessageEntity {
     public void setLetterText(String letterText) {
         this.letterText = letterText;
     }
+
+    @Override
+    public String toString() {
+        return "MessageEntity{" +
+                "topic='" + topic + '\'' +
+                ", receiver='" + receiver + '\'' +
+                ", cc='" + cc + '\'' +
+                ", bcc='" + bcc + '\'' +
+                ", letterText='" + letterText + '\'' +
+                '}';
+    }
 }

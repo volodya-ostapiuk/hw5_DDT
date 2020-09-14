@@ -59,4 +59,9 @@ public class GmailMessageBO {
         logger.info("Waiting on draft message sent link to be clickable.");
         homePage.waitOnSentMessageLinkToBeClickable();
     }
+
+    public boolean isDraftSent() {
+        logger.info("Checking is draft message sent by appearance of sent link.");
+        return homePage.isSentMessageLinkDisplayed();
+    }
 }

@@ -5,12 +5,15 @@ public class UserEntity {
 
     private String password;
 
+    private boolean expected;
+
     public UserEntity() {
     }
 
-    public UserEntity(String email, String password) {
+    public UserEntity(String email, String password, boolean expected) {
         this.email = email;
         this.password = password;
+        this.expected = expected;
     }
 
     public String getEmail() {
@@ -27,5 +30,13 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isExpected() {
+        return expected;
+    }
+
+    public void setExpected(boolean expected) {
+        this.expected = expected;
     }
 }

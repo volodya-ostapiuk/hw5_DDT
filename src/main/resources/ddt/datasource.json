@@ -9,23 +9,28 @@
   "users": [
     {
       "email": "test.automv",
-      "password": "testaut50"
+      "password": "testaut50",
+      "expected": true
     },
     {
       "email": "test.automv1",
-      "password": "testaut51"
+      "password": "testaut50",
+      "expected": false
     },
     {
       "email": "test.automv2",
-      "password": "testaut52"
+      "password": "testaut52_",
+      "expected": false
     },
     {
       "email": "test.automv3",
-      "password": "testaut53"
+      "password": "testaut53",
+      "expected": true
     },
     {
       "email": "test.automv4",
-      "password": "testaut54"
+      "password": "testaut50",
+      "expected": false
     }
   ]
 }
