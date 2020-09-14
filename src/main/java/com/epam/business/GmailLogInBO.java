@@ -37,7 +37,7 @@ public class GmailLogInBO {
     }
 
     public boolean isLogIn(String userEmail, String userPassword) {
-        logger.info("Checking is mail logo displayed to verify user log in");
+        logger.info("Checking is mail logo that appear after success login displayed");
         logIn(userEmail, userPassword);
         try {
             homePage.isMailLogoDisplayed();
